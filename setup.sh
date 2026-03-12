@@ -13,10 +13,10 @@ echo
 echo "🚀 Next.js Docker Project Setup"
 echo
 
-if [ -f ".project" ]; then
-echo "Project: $(cat .project)"
+PROJECT_NAME=$(basename "$PWD")
+
+echo "Project: $PROJECT_NAME"
 echo
-fi
 
 }
 
@@ -102,29 +102,6 @@ echo -e "${RED}A project already exists in this directory.${NC}"
 echo "Run this script in a new directory."
 exit 1
 fi
-
-}
-
-ask_project_name() {
-
-if [ -f ".project" ]; then
-PROJECT_NAME=$(cat .project)
-return
-fi
-
-echo
-read -p "Enter project name: " PROJECT_NAME
-
-if [ -z "$PROJECT_NAME" ]; then
-echo -e "${RED}Project name cannot be empty.${NC}"
-exit 1
-fi
-
-echo "$PROJECT_NAME" > .project
-
-echo
-echo "Project name: $PROJECT_NAME"
-echo
 
 }
 
@@ -443,7 +420,7 @@ fi
 show_success() {
 
 source .env
-PROJECT_NAME=$(cat .project)
+PROJECT_NAME=$(basename "$PWD")
 
 echo
 echo -e "${GREEN}✅ Project '$PROJECT_NAME' successfully created!${NC}"
@@ -481,7 +458,6 @@ check_node_installed
 check_npx_installed
 check_openssl_installed
 ensure_empty_project
-ask_project_name
 ask_services
 create_nextjs_project
 fix_docker_permissions
