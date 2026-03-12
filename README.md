@@ -13,6 +13,32 @@ This template automatically creates a project with:
 
 Everything runs inside Docker so it **does not affect your system**.
 
+Estimated setup time: **5–10 minutes**.
+
+---
+
+# Quick Start
+
+If you already have Docker and Node.js installed you can start immediately.
+
+```bash
+git clone https://github.com/YOUR-USERNAME/dev-env-template YOUR-PROJECT-NAME
+cd YOUR-PROJECT-NAME
+chmod +x setup.sh dev.sh
+
+./setup.sh
+./dev.sh rebuild
+./dev.sh start
+```
+
+Then run:
+
+```bash
+./dev.sh ports
+```
+
+Open the URLs shown in your browser.
+
 ---
 
 # Works On
@@ -27,11 +53,37 @@ This template has been tested on:
 
 # Requirements
 
-Install these first.
+This template requires **Docker** and **Node.js**.
 
-## 1. Docker
+Before installing anything, check if they are already installed.
 
-Download and install:
+---
+
+## 1. Check Your System
+
+Run the following commands in your terminal:
+
+```bash
+docker --version
+node --version
+```
+
+If both commands print a version number, your system is ready.
+
+Example:
+
+```
+Docker version 24.x
+v20.x
+```
+
+If one of these commands fails, install the missing software below.
+
+---
+
+## 2. Install Docker (if needed)
+
+Download Docker Desktop:
 
 [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)
 
@@ -41,13 +93,13 @@ Verify installation:
 docker --version
 ```
 
-Docker must be **running** before starting the environment.
+Make sure **Docker is running** before continuing.
 
 ---
 
-## 2. Node.js
+## 3. Install Node.js (if needed)
 
-Download:
+Download Node.js LTS:
 
 [https://nodejs.org](https://nodejs.org)
 
@@ -57,13 +109,13 @@ Verify installation:
 node --version
 ```
 
-Node.js LTS is recommended.
+Node.js **LTS version** is recommended.
 
 ---
 
 # Step 1 — Create a Project From This Template
 
-Clone the template repository:
+Clone the template repository. You can choose **any name for your project folder** (replace `YOUR-PROJECT-NAME` with the name you want):
 
 ```bash
 git clone https://github.com/YOUR-USERNAME/dev-env-template my-project
@@ -75,7 +127,7 @@ Enter the project folder:
 cd my-project
 ```
 
-Make the scripts executable:
+Make scripts executable:
 
 ```bash
 chmod +x setup.sh dev.sh
@@ -87,20 +139,20 @@ Run the setup script:
 ./setup.sh
 ```
 
-This will automatically:
+This script automatically:
 
-* create a Next.js project
-* configure Docker
-* configure PostgreSQL
-* configure Redis
-* generate environment variables
-* prepare the development environment
+* creates a Next.js project
+* configures Docker
+* configures PostgreSQL
+* configures Redis
+* generates environment variables
+* prepares the development environment
 
 ---
 
 # Step 2 — Start the Development Environment
 
-Build the containers:
+Build containers:
 
 ```bash
 ./dev.sh rebuild
@@ -203,7 +255,7 @@ If something breaks:
 ./dev.sh rebuild
 ```
 
-You can also check your system setup:
+You can also run diagnostics:
 
 ```bash
 ./dev.sh doctor
