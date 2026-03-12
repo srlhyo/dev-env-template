@@ -1,130 +1,47 @@
 # Next.js Docker Development Template
 
-Create a **complete web development environment in minutes**.
+Create a **complete web development environment in minutes** using Docker.
 
 This template automatically creates a project with:
 
-* Next.js (web framework)
-* PostgreSQL (database)
-* Redis (cache)
-* pgAdmin (database management UI)
-* Redis Commander (Redis UI)
-* Docker containers for isolated development
+* **Next.js** (web framework)
+* **PostgreSQL** (database)
+* **Redis** (cache)
+* **pgAdmin** (database UI)
+* **Redis Commander** (Redis UI)
+* **Docker** containers for isolated development
 
 Everything runs inside Docker so it **does not affect your system**.
 
-Estimated setup time: **5–10 minutes**.
-
 ---
 
-# Quick Start
+# Step 1 — Create Your Project From This Template
 
-If you already have Docker and Node.js installed you can start immediately.
+On the GitHub page of this repository click:
 
-```bash
-git clone https://github.com/YOUR-USERNAME/dev-env-template YOUR-PROJECT-NAME
-cd YOUR-PROJECT-NAME
-chmod +x setup.sh dev.sh
-
-./setup.sh
-./dev.sh rebuild
-./dev.sh start
+```
+Use this template
 ```
 
-Then run:
+Then:
 
-```bash
-./dev.sh ports
-```
+1. Choose a **repository name** (this will be your project name)
+2. Choose **public or private**
+3. Click **Create repository**
 
-Open the URLs shown in your browser.
-
----
-
-# Works On
-
-This template has been tested on:
-
-* macOS
-* Linux
-* Windows (WSL)
+GitHub will create a **new repository based on this template**.
 
 ---
 
-# Requirements
+# Step 2 — Clone Your New Project
 
-This template requires **Docker** and **Node.js**.
-
-Before installing anything, check if they are already installed.
-
----
-
-## 1. Check Your System
-
-Run the following commands in your terminal:
-
-```bash
-docker --version
-node --version
-```
-
-If both commands print a version number, your system is ready.
+Clone the repository you just created.
 
 Example:
 
-```
-Docker version 24.x
-v20.x
-```
-
-If one of these commands fails, install the missing software below.
-
----
-
-## 2. Install Docker (if needed)
-
-Download Docker Desktop:
-
-[https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)
-
-Verify installation:
-
 ```bash
-docker --version
-```
-
-Make sure **Docker is running** before continuing.
-
----
-
-## 3. Install Node.js (if needed)
-
-Download Node.js LTS:
-
-[https://nodejs.org](https://nodejs.org)
-
-Verify installation:
-
-```bash
-node --version
-```
-
-Node.js **LTS version** is recommended.
-
----
-
-# Step 1 — Create a Project From This Template
-
-Clone the template repository. You can choose **any name for your project folder** (replace `YOUR-PROJECT-NAME` with the name you want):
-
-```bash
-git clone https://github.com/YOUR-USERNAME/dev-env-template my-project
-```
-
-Enter the project folder:
-
-```bash
-cd my-project
+git clone https://github.com/YOUR-USERNAME/YOUR-PROJECT
+cd YOUR-PROJECT
 ```
 
 Make scripts executable:
@@ -133,26 +50,64 @@ Make scripts executable:
 chmod +x setup.sh dev.sh
 ```
 
+---
+
+# Step 3 — Verify System Requirements
+
+Before running the setup, verify that required tools are installed.
+
+### Docker
+
+Check Docker:
+
+```bash
+docker --version
+```
+
+If Docker is not installed:
+
+[https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)
+
+Docker must be **running** before starting the environment.
+
+---
+
+### Node.js
+
+Check Node:
+
+```bash
+node --version
+```
+
+If Node.js is not installed:
+
+[https://nodejs.org](https://nodejs.org)
+
+---
+
+# Step 4 — Run Project Setup
+
 Run the setup script:
 
 ```bash
 ./setup.sh
 ```
 
-This script automatically:
+This will automatically:
 
-* creates a Next.js project
-* configures Docker
-* configures PostgreSQL
-* configures Redis
-* generates environment variables
-* prepares the development environment
+* create a Next.js project
+* configure Docker
+* configure PostgreSQL
+* configure Redis
+* generate environment variables
+* prepare the development environment
 
 ---
 
-# Step 2 — Start the Development Environment
+# Step 5 — Start the Development Environment
 
-Build containers:
+Build the containers:
 
 ```bash
 ./dev.sh rebuild
@@ -166,25 +121,27 @@ Start the environment:
 
 ---
 
-# Step 3 — Open the Applications
+# Step 6 — Open the Applications
 
-Ports may change automatically if your system already uses the default ones.
+Once running, open these in your browser.
 
-Run this command to see the correct URLs:
-
-```bash
-./dev.sh ports
-```
-
-Example output:
+### Web Application
 
 ```
-Next.js → http://localhost:3000
-pgAdmin → http://localhost:5050
-Redis Commander → http://localhost:8081
+http://localhost:3000
 ```
 
-Open the URLs shown in your browser.
+### Database Interface (pgAdmin)
+
+```
+http://localhost:5050
+```
+
+### Redis Interface
+
+```
+http://localhost:8081
+```
 
 ---
 
@@ -228,24 +185,6 @@ Reset the environment
 
 ---
 
-# Create a GitHub Repository for Your Project
-
-After the project is created, you can connect it to GitHub.
-
-Create a new repository on GitHub, then run:
-
-```bash
-git init
-git add .
-git commit -m "Initial project"
-
-git remote add origin https://github.com/YOUR-USERNAME/YOUR-PROJECT.git
-git branch -M main
-git push -u origin main
-```
-
----
-
 # Troubleshooting
 
 If something breaks:
@@ -255,7 +194,7 @@ If something breaks:
 ./dev.sh rebuild
 ```
 
-You can also run diagnostics:
+You can also check your system setup:
 
 ```bash
 ./dev.sh doctor

@@ -174,7 +174,8 @@ npx create-next-app@latest temp-next-app \
 --app \
 --src-dir \
 --import-alias "@/*" \
---use-npm
+--use-npm \
+--yes
 
 echo -e "${YELLOW}▶ Moving project files...${NC}"
 
