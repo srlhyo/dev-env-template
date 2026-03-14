@@ -92,7 +92,6 @@ create_nextjs_project() {
   echo -e "${YELLOW}Creating Next.js project (Docker isolated)...${NC}"
 
   docker run --rm \
-    -u "$(id -u):$(id -g)" \
     -e HOME=/tmp \
     -e NPM_CONFIG_CACHE=/tmp/.npm \
     -v "$PWD":/app -w /app node:22 \
@@ -123,7 +122,6 @@ install_prisma() {
   echo -e "${YELLOW}Installing Prisma...${NC}"
 
   docker run --rm \
-    -u "$(id -u):$(id -g)" \
     -e HOME=/tmp \
     -e NPM_CONFIG_CACHE=/tmp/.npm \
     -v "$PWD":/app -w /app node:22 \
