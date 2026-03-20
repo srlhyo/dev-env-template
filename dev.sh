@@ -14,11 +14,13 @@ dc() {
 $DOCKER_COMPOSE --env-file "$ENV_FILE" -f "$COMPOSE_FILE" "$@"
 }
 
-require_env() {
+ensure_env() {
+
 if [ ! -f "$ENV_FILE" ]; then
-  echo "Missing .env file"
-  exit 1
+  echo "Creating .env from .env.example"
+  cp .env.example .env
 fi
+
 }
 
 start() {

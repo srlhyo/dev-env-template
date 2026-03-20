@@ -106,7 +106,8 @@ create_nextjs_project() {
         --src-dir \
         --import-alias '@/*' \
         --use-npm \
-        --yes
+        --yes &&
+      chown -R $(id -u):$(id -g) /app/temp-app
     "
 
   shopt -s dotglob
@@ -128,7 +129,8 @@ install_prisma() {
     bash -c "
       npm install prisma dotenv --save-dev &&
       npm install @prisma/client &&
-      npx prisma init
+      npx prisma init &&
+      chown -R $(id -u):$(id -g) /app
     "
 
 }
