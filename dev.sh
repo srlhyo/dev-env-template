@@ -64,6 +64,16 @@ status() {
 # Services
 # -----------------------------
 
+wait_app() {
+  echo "Waiting for app container..."
+
+  until dc ps | grep -q "app.*Up"; do
+    sleep 2
+  done
+
+  echo "App container ready"
+}
+
 wait_postgres() {
 
   if ! dc ps | grep -q postgres; then
@@ -104,14 +114,21 @@ rebuild() {
   dc build --no-cache
   dc up -d
 
+  wait_app
   wait_postgres
 
-  echo "Installing dependencies..."
-  dc exec -T app npm install --no-audit --no-fund || true
+  if [ -f "prisma/schema.prisma" ]; then
+    echo "Running Prisma setup..."
 
-  echo "Running Prisma setup..."
-  dc exec -T app npx prisma generate || true
-  dc exec -T app npx prisma migrate deploy || true
+    if dc ps | grep -q "app.*Up"; then
+      dc exec -T app npx prisma generate
+      dc exec -T app npx prisma migrate deploy
+    else
+      echo "App container is not running — skipping Prisma setup"
+    fi
+  else
+    echo "Prisma schema not found — skipping Prisma setup"
+  fi
 
   echo
   echo "Environment ready"
